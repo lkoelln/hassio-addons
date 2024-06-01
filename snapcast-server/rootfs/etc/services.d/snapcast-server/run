@@ -7,6 +7,7 @@
 config=/etc/snapserver.conf
 
 until [ -e /run/avahi-daemon/pid ]; do
+  bashio::log.debug "Snapserver waiting for avahi-daemon pid..."
   sleep 1s
 done
 
@@ -51,6 +52,8 @@ fi
     echo "[http]"
     echo "doc_root = /usr/share/snapserver/snapweb"
 } >> "${config}"
+
+bashio::log.debug "SnapServer Config: $(cat ${config})"
 
 # Configure snapweb
 cat <<EOT > /usr/share/snapserver/snapweb/config.js

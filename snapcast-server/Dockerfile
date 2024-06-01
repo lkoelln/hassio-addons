@@ -75,6 +75,9 @@ RUN \
         mkdir -p /var/run/dbus
         # && touch /var/run/dbus/system_bus_socket
 
+# https://stackoverflow.com/a/75295879 dbus daemon slow start fix
+RUN sed -i 's/ systemd//g' /etc/nsswitch.conf
+
 # Copy root filesystem
 COPY rootfs /
 
