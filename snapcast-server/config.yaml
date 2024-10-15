@@ -40,6 +40,7 @@ options:
   codec: flac
   send_to_muted: false
   sampleformat: "48000:16:2"
+  initial_volume: 30
   renderer_name: "Home Assistant DLNA Renderer"
   spotify_name: "Home Assistant Sound System"
   log_level: info
@@ -53,6 +54,7 @@ schema:
   renderer_name: str
   send_to_muted: bool
   sampleformat: str
+  initial_volume: int
   spotify_name: str
   spotify_username: str?
   spotify_password: password?

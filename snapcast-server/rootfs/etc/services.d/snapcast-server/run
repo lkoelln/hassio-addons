@@ -51,6 +51,9 @@ fi
     echo "chunk_ms = $(bashio::config 'chunk_ms')"
     echo "[http]"
     echo "doc_root = /usr/share/snapserver/snapweb"
+    echo "[streaming_client]"
+    # echo "initial_volume = 30"
+    echo "initial_volume = $(bashio::config 'initial_volume')"
 } >> "${config}"
 
 bashio::log.debug "SnapServer Config: $(cat ${config})"
