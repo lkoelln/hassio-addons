@@ -24,3 +24,6 @@ configuration:
     name: DLNA Renderer device name
   log_level:
     name: Log level
+  initial_volume:
+    name: Inital volume
+    description: Volume assigned to new snapclients [percent]
