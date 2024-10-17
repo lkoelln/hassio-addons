@@ -1,9 +1,9 @@
 # https://developers.home-assistant.io/docs/add-ons/configuration#add-on-config
 name: Snapcast server
-version: "0.3.1"
+version: "0.3.1-1"
 slug: snapcast-server
 description: Snapcast server with Spotify connect and DLNA Renderer support
-url: "https://github.com/lkoelln/hassio-addons/tree/main/snapcast-server"
+url: "https://github.com/eddiekk/hassio-addons/tree/main/snapcast-server"
 audio: true
 host_network: true
 ingress: true
@@ -41,6 +41,9 @@ options:
   send_to_muted: false
   sampleformat: "48000:16:2"
   initial_volume: 30
+  volume: 30
+  normalize: true
+  autoplay: true
   renderer_name: "Home Assistant DLNA Renderer"
   spotify_name: "Home Assistant Sound System"
   log_level: info
@@ -55,6 +58,9 @@ schema:
   send_to_muted: bool
   sampleformat: str
   initial_volume: int
+  volume: int
+  normalize: bool
+  autoplay: bool
   spotify_name: str
   spotify_username: str?
   spotify_password: password?
