@@ -43,7 +43,7 @@ if bashio::config.has_value 'spotify_username'; then
 fi
 
 {
-    echo "source = librespot:///usr/bin/librespot?name=Spotify&devicename="${device_name}"${spotify_auth}&disable_audio_cache=true"
+    echo "source = librespot:///usr/bin/librespot?name=Spotify&devicename="${device_name}"${spotify_auth}&disable_audio_cache=true&volume=30&normalize=true&autoplay=true"
     echo "buffer = $(bashio::config 'buffer')"
     echo "codec = $(bashio::config 'codec')"
     echo "send_to_muted = $(bashio::config 'send_to_muted')"
@@ -52,8 +52,10 @@ fi
     echo "[http]"
     echo "doc_root = /usr/share/snapserver/snapweb"
     echo "[streaming_client]"
-    # echo "initial_volume = 30"
     echo "initial_volume = $(bashio::config 'initial_volume')"
+    echo "volume = $(bashio::config 'volume')"
+    echo "normalize = $(bashio::config 'normalize')"
+    echo "autoplay = $(bashio::config 'autoplay')"
 } >> "${config}"
 
 bashio::log.debug "SnapServer Config: $(cat ${config})"

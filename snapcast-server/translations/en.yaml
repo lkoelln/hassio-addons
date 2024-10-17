@@ -26,4 +26,14 @@ configuration:
     name: Log level
   initial_volume:
     name: Inital volume
-    description: Volume assigned to new snapclients [percent]
+    description: Volume assigned to new snapclients
+  volume:
+    name: Spotify stream - Initial volume
+    description: Spotify volume for streams (used whenever a new device connects)
+  normalize:
+    name: Spotify stream - Normalize volume
+    description: Normalize volume of Spotify audio tracks
+  autoplay:
+    name: Spotify stream - Never stop the music
+    description: Continue listening to similar music at end of playlist
+
