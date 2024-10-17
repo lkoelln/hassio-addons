@@ -1,4 +1,4 @@
 # https://developers.home-assistant.io/docs/add-ons/repository#repository-configuration
-name: lkoellns's add-on repository
-url: "https://github.com/lkoelln/hassio-addons"
-maintainer: lkoelln
+name: eddiekk's add-on repository
+url: "https://github.com/eddiekk/hassio-addons"
+maintainer: eddiekk

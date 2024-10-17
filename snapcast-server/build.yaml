@@ -8,5 +8,5 @@ build_from:
 labels:
   org.opencontainers.image.title: "Snapcast-server add-on"
   org.opencontainers.image.description: "Snapcast server Add-on with Spotify connect + DLNA support."
-  org.opencontainers.image.source: "https://github.com/lkoelln/hassio-addons"
+  org.opencontainers.image.source: "https://github.com/eddiekk/hassio-addons"
   org.opencontainers.image.licenses: "Apache License 2.0"
