@@ -97,11 +97,11 @@ LABEL \
     io.hass.arch="${BUILD_ARCH}" \
     io.hass.type="addon" \
     io.hass.version=${BUILD_VERSION} \
-    maintainer="lkoelln" \
+    maintainer="eddiekk" \
     org.opencontainers.image.title="${BUILD_NAME}" \
     org.opencontainers.image.description="${BUILD_DESCRIPTION}" \
-    org.opencontainers.image.vendor="lkoelln's addons" \
-    org.opencontainers.image.authors="lkoelln" \
+    org.opencontainers.image.vendor="eddiekk's addons" \
+    org.opencontainers.image.authors="eddiekk" \
     org.opencontainers.image.licenses="MIT" \
     org.opencontainers.image.url="https://github.com/${BUILD_REPOSITORY}" \
     org.opencontainers.image.source="https://github.com/${BUILD_REPOSITORY}" \
