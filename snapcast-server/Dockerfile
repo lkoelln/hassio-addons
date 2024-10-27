@@ -17,7 +17,8 @@ RUN \
         pkgconf \  
         gcc \
         g++ \
-        make
+        make \
+        cmake
 RUN \
 	apk add --no-cache \
         dbus \
