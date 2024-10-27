@@ -43,16 +43,19 @@ RUN \
         gst-libav \
         gstreamer-dev \
         gstreamer-tools
-RUN \
-	cargo install \
-        --locked \
-        --no-default-features \
-        --features with-dns-sd \
-        --root /usr \
-        --bin librespot \
-        --version 0.5.0 \
-        --verbose \
-        -- librespot
+#RUN \
+#	cargo install \
+#        --locked \
+#        --no-default-features \
+#        --features with-dns-sd \
+#        --root /usr \
+#        --bin librespot \
+#        --version 0.5.0 \
+#        --verbose \
+#        -- librespot
+
+RUN apk add librespot --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing
+
 RUN \
         addgroup root audio
 RUN \
