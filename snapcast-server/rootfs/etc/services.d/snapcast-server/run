@@ -39,11 +39,11 @@ if bashio::config.has_value 'spotify_username'; then
     username=$(bashio::config 'spotify_username')
     password=$(bashio::config 'spotify_password')
 
-    spotify_auth="&username=${username}&password=${password}"
+    spotify_auth="&username=${username}&access_token=${password}"
 fi
 
 {
-    echo "source = librespot:///usr/bin/librespot?name=Spotify&devicename="${device_name}"${spotify_auth}&disable_audio_cache=true"
+    echo "source = librespot:///usr/bin/librespot?name=Spotify&devicename="${device_name}"${spotify_auth}&disable_audio_cache=true&cache=%2Fdata%2Fspot"
     echo "buffer = $(bashio::config 'buffer')"
     echo "codec = $(bashio::config 'codec')"
     echo "send_to_muted = $(bashio::config 'send_to_muted')"
