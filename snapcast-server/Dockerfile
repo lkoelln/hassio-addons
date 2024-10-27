@@ -1,5 +1,5 @@
 # https://developers.home-assistant.io/docs/add-ons/configuration#add-on-dockerfile
-ARG BUILD_FROM=ghcr.io/hassio-addons/base:14.3.3
+ARG BUILD_FROM=ghcr.io/hassio-addons/base:16.3.4
 FROM $BUILD_FROM
 
 # See https://github.com/librespot-org/librespot/wiki/Compiling#addition-features for librespot compile features.
@@ -49,7 +49,7 @@ RUN \
         --features with-dns-sd \
         --root /usr \
         --bin librespot \
-        --version 0.4.2 \
+        --version 0.5.0 \
         --verbose \
         -- librespot
 RUN \
