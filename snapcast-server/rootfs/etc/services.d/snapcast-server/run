@@ -50,7 +50,7 @@ fi
     echo "sampleformat = $(bashio::config 'sampleformat')"
     echo "chunk_ms = $(bashio::config 'chunk_ms')"
     echo "[http]"
-    echo "doc_root = /usr/share/snapserver/snapweb"
+    echo "doc_root = /usr/share/snapweb"
 } >> "${config}"
 
 bashio::log.debug "SnapServer Config: $(cat ${config})"
