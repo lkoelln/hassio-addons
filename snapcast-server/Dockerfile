@@ -2,6 +2,8 @@
 ARG BUILD_FROM=ghcr.io/hassio-addons/base:16.3.4
 FROM $BUILD_FROM
 
+RUN apk update
+
 # See https://github.com/librespot-org/librespot/wiki/Compiling#addition-features for librespot compile features.
 RUN \
 	apk add --no-cache --virtual .build-dependencies \
