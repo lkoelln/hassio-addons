@@ -1,5 +1,11 @@
 <!-- https://developers.home-assistant.io/docs/add-ons/presentation#keeping-a-changelog -->
 
+
+## 0.4.0
+
+- Updated Librespot + Snapserver + SnapWeb
+
+
 ## 0.3.0
 
 - Add support for DLNA Media Renderer: Connect Homeassitant with snapcast through DLNA
