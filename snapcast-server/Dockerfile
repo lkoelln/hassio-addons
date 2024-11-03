@@ -16,7 +16,7 @@ RUN \
         autoconf \
         automake \
         libtool \
-        pkgconf \  
+        pkgconf \
         gcc \
         g++ \
         make \
@@ -29,7 +29,7 @@ RUN \
         avahi \
         pulseaudio \
         alsa-plugins-pulse \
-	    snapcast \
+	snapcast \
         alsa-utils \
         alsa-utils-doc \
         alsa-lib \
@@ -57,7 +57,8 @@ RUN \
 #        -- librespot
 
 RUN apk add librespot --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing
-RUN apk add snapweb --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing
+RUN wget https://github.com/badaix/snapweb/releases/download/v0.8.0/snapweb.zip
+RUN unzip snapweb.zip -d /usr/share/snapweb
 
 RUN \
         addgroup root audio
