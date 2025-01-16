@@ -3,6 +3,7 @@
 ## 0.4.3
 
 fix: respect samplerate in DLNA Media Render
+fix(snapserver): typo in config
 
 ## 0.4.2
 
