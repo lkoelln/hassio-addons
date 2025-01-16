@@ -54,7 +54,7 @@ fi
 bashio::log.debug "SnapServer Config: $(cat ${config})"
 
 # Configure snapweb
-cat <<EOT > /usr/share/snapserver/snapweb/config.js
+cat <<EOT > /usr/share/snapweb/config.js
 "use strict";
 let config = {
     baseUrl: (window.location.protocol === 'https:' ? 'wss://' : 'ws://') + window.location.host + window.location.pathname.replace(/\/$/, '')
