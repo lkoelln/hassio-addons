@@ -24,9 +24,11 @@ echo "[stream]" > "${config}"
 for stream in $(bashio::config 'streams.streams'); do
     echo "source = ${stream}" >> "${config}"
 done
+
+sampleformat=$(bashio::config 'sampleformat')
 # Add DLNA Media Renderer source
 {
-    echo "source = pipe:///share/snapfifo?&name=DLNA&disable_audio_cache=true&sampleformat=48000:16:2"
+    echo "source = pipe:///share/snapfifo?&name=DLNA&disable_audio_cache=true&sampleformat=${sampleformat}"
 } >> "${config}"
 
 # Add the Spotify source

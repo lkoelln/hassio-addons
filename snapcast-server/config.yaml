@@ -39,7 +39,7 @@ options:
   chunk_ms: 20
   codec: flac
   send_to_muted: false
-  sampleformat: "48000:16:2"
+  sampleformat: "44100:16:2"
   renderer_name: "Home Assistant DLNA Renderer"
   spotify_name: "Home Assistant Sound System"
   log_level: info

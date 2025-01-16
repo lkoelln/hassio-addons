@@ -2,4 +2,9 @@
 
 bashio::log.info 'Starting DLNA Renderer' 
 device_name=$(bashio::config 'renderer_name')
-exec /usr/local/bin/gmediarender -f "${device_name}" -p 50000 --gstout-audiopipe 'audioresample ! audio/x-raw, rate=48000, format=S16LE ! filesink location=/share/snapfifo'
+samplerate=${echo $(bashio::config 'sampleformat') | cut -d: -f1}
+sampleformat=${echo $(bashio::config 'sampleformat') | cut -d: -f2}
+
+bashio::log.debug "gmediarender (DLNA) config: $(echo samplerate=${samplerate}, sampleformat=${sampleformat})"
+
+exec /usr/local/bin/gmediarender -f "${device_name}" -p 50000 --gstout-audiopipe "audioresample ! audio/x-raw, rate=${samplerate}, format=S${sampleformat}LE ! filesink location=/share/snapfifo"
