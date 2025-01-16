@@ -1,5 +1,9 @@
 <!-- https://developers.home-assistant.io/docs/add-ons/presentation#keeping-a-changelog -->
 
+## 0.4.3
+
+fix: respect samplerate in DLNA Media Render
+
 ## 0.4.2
 
 fix dbus long startup by @unex in #4
