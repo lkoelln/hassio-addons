@@ -2,8 +2,9 @@
 
 bashio::log.info 'Starting DLNA Renderer' 
 device_name=$(bashio::config 'renderer_name')
-samplerate=${echo $(bashio::config 'sampleformat') | cut -d: -f1}
-sampleformat=${echo $(bashio::config 'sampleformat') | cut -d: -f2}
+sampleformat=$(bashio::config 'sampleformat')
+samplerate=${echo ${sampleformat} | cut -d: -f1}
+sampleformat=${echo ${sampleformat} | cut -d: -f2}
 
 bashio::log.debug "gmediarender (DLNA) config: $(echo samplerate=${samplerate}, sampleformat=${sampleformat})"
 
