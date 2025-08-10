@@ -1,5 +1,9 @@
 <!-- https://developers.home-assistant.io/docs/add-ons/presentation#keeping-a-changelog -->
 
+## 0.4.5
+updated versions
+
+
 ## 0.4.3
 
 fix: respect samplerate in DLNA Media Render
