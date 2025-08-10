@@ -16,10 +16,8 @@ configuration:
   spotify_name:
     name: Spotify device name
     description: The name of the device as shown in Spotify
-  spotify_username:
-    name: Spotify username
-  spotify_password:
-    name: Spotify password
+  spotify_token:
+    name: "Spotify token. Obtained from: https://open.spotify.com/get_access_token. More Info: https://github.com/librespot-org/librespot/wiki/Options#access-token"
   renderer_name:
     name: DLNA Renderer device name
   log_level:

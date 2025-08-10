@@ -1,5 +1,5 @@
 # https://developers.home-assistant.io/docs/add-ons/configuration#add-on-dockerfile
-ARG BUILD_FROM=ghcr.io/hassio-addons/base:16.3.4
+ARG BUILD_FROM=ghcr.io/hassio-addons/base:18.1.0
 FROM $BUILD_FROM
 
 RUN apk update
@@ -29,7 +29,7 @@ RUN \
         avahi \
         pulseaudio \
         alsa-plugins-pulse \
-	snapcast \
+#        snapcast \
         alsa-utils \
         alsa-utils-doc \
         alsa-lib \
@@ -56,8 +56,9 @@ RUN \
 #        --verbose \
 #        -- librespot
 
+RUN apk add snapcast --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing
 RUN apk add librespot --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing
-RUN wget https://github.com/badaix/snapweb/releases/download/v0.8.0/snapweb.zip
+RUN wget https://github.com/badaix/snapweb/releases/download/v0.9.1/snapweb.zip
 RUN unzip snapweb.zip -d /usr/share/snapweb
 
 RUN \
