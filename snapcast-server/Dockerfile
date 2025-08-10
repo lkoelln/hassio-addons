@@ -101,8 +101,11 @@ ARG BUILD_VERSION
 
 # Librespot issues with Spotify DNS resolution
 # See https://github.com/librespot-org/librespot/issues/1527
-RUN echo "0.0.0.0 apresolve.spotify.com" >> /etc/hosts
-
+RUN echo "0.0.0.0 apresolve.spotify.com" > /etc/hosts.librespot \
+    && cat /etc/hosts >> /etc/hosts.librespot \
+    && cp /etc/hosts.librespot /etc/hosts \
+    && rm /etc/hosts.librespot
+    
 # Labels
 LABEL \
     io.hass.name="${BUILD_NAME}" \
