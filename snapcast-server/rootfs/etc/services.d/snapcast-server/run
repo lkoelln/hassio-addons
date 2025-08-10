@@ -7,6 +7,7 @@
 config=/etc/snapserver.conf
 
 until [ -e /run/avahi-daemon/pid ]; do
+  bashio::log.debug "Snapserver waiting for avahi-daemon pid..."
   sleep 1s
 done
 
@@ -34,10 +35,13 @@ sampleformat=$(bashio::config 'sampleformat')
 # Add the Spotify source
 device_name=$(bashio::config 'spotify_name')
 spotify_auth=""
-if bashio::config.has_value 'spotify_token'; then
+if bashio::config.has_value 'spotify_username'; then
+    bashio::config.require 'spotify_password'
 
-    token=$(bashio::config 'spotify_token')
-    spotify_auth="&access_token=${token}"
+    username=$(bashio::config 'spotify_username')
+    password=$(bashio::config 'spotify_password')
+
+    spotify_auth="&access_token=${password}"
 fi
 
 {

@@ -2,6 +2,8 @@
 ARG BUILD_FROM=ghcr.io/hassio-addons/base:16.3.4
 FROM $BUILD_FROM
 
+RUN apk update
+
 # See https://github.com/librespot-org/librespot/wiki/Compiling#addition-features for librespot compile features.
 RUN \
 	apk add --no-cache --virtual .build-dependencies \
@@ -14,12 +16,11 @@ RUN \
         autoconf \
         automake \
         libtool \
-        pkgconf \  
+        pkgconf \
         gcc \
         g++ \
         make \
         cmake
-        #rust-bindgen
 RUN \
 	apk add --no-cache \
         dbus \
@@ -28,7 +29,7 @@ RUN \
         avahi \
         pulseaudio \
         alsa-plugins-pulse \
-	    snapcast \
+	snapcast \
         alsa-utils \
         alsa-utils-doc \
         alsa-lib \
@@ -44,20 +45,20 @@ RUN \
         gst-libav \
         gstreamer-dev \
         gstreamer-tools
+#RUN \
+#	cargo install \
+#        --locked \
+#        --no-default-features \
+#        --features with-dns-sd \
+#        --root /usr \
+#        --bin librespot \
+#        --version 0.5.0 \
+#        --verbose \
+#        -- librespot
 
-        # RUN \
-# 	cargo install \
-#         --locked \
-#         --no-default-features \
-#         --features with-dns-sd \
-#         --root /usr \
-#         --bin librespot \
-#         --version 0.6.0 \
-#         --verbose \
-#         -- librespot
-
-RUN apk add --no-cache librespot --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing
-RUN apk add --no-cache snapweb --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing
+RUN apk add librespot --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing
+RUN wget https://github.com/badaix/snapweb/releases/download/v0.8.0/snapweb.zip
+RUN unzip snapweb.zip -d /usr/share/snapweb
 
 RUN \
         addgroup root audio
@@ -104,11 +105,11 @@ LABEL \
     io.hass.arch="${BUILD_ARCH}" \
     io.hass.type="addon" \
     io.hass.version=${BUILD_VERSION} \
-    maintainer="DjFabFab" \
+    maintainer="lkoelln" \
     org.opencontainers.image.title="${BUILD_NAME}" \
     org.opencontainers.image.description="${BUILD_DESCRIPTION}" \
-    org.opencontainers.image.vendor="DjFabFab's addons" \
-    org.opencontainers.image.authors="DjFabFab" \
+    org.opencontainers.image.vendor="lkoelln's addons" \
+    org.opencontainers.image.authors="lkoelln" \
     org.opencontainers.image.licenses="MIT" \
     org.opencontainers.image.url="https://github.com/${BUILD_REPOSITORY}" \
     org.opencontainers.image.source="https://github.com/${BUILD_REPOSITORY}" \

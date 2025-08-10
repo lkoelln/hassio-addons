@@ -15,7 +15,8 @@ fix dbus long startup by @unex in #4
 
 ## 0.4.0
 
-- Dependcy Updates. Please migrate to libresport / Spotify token auth.
+- Updated Librespot + Snapserver + SnapWeb
+
 
 ## 0.3.0
 

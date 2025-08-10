@@ -1,4 +1,4 @@
 # https://developers.home-assistant.io/docs/add-ons/repository#repository-configuration
-name: DjFabFab's add-on repository
-url: "https://github.com/DjFabFab/hassio-snapcast"
-maintainer: DjFabFab
+name: lkoellns's add-on repository
+url: "https://github.com/lkoelln/hassio-addons"
+maintainer: lkoelln
