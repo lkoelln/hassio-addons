@@ -99,6 +99,10 @@ ARG BUILD_REF
 ARG BUILD_REPOSITORY
 ARG BUILD_VERSION
 
+# Librespot issues with Spotify DNS resolution
+# See https://github.com/librespot-org/librespot/issues/1527
+RUN echo "0.0.0.0 apresolve.spotify.com" >> /etc/hosts
+
 # Labels
 LABEL \
     io.hass.name="${BUILD_NAME}" \
