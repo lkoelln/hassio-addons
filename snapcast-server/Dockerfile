@@ -87,6 +87,10 @@ RUN \
 # https://stackoverflow.com/a/75295879 dbus daemon slow start fix
 RUN sed -i 's/ systemd//g' /etc/nsswitch.conf
 
+# Librespot issues with Spotify DNS resolution
+# See https://github.com/librespot-org/librespot/issues/1527
+RUN sed -i '1i0.0.0.0 apresolve.spotify.com' /etc/hosts
+
 # Copy root filesystem
 COPY rootfs /
 
@@ -99,13 +103,7 @@ ARG BUILD_REF
 ARG BUILD_REPOSITORY
 ARG BUILD_VERSION
 
-# Librespot issues with Spotify DNS resolution
-# See https://github.com/librespot-org/librespot/issues/1527
-RUN echo "0.0.0.0 apresolve.spotify.com" > /etc/hosts.librespot \
-    && cat /etc/hosts >> /etc/hosts.librespot \
-    && cp /etc/hosts.librespot /etc/hosts \
-    && rm /etc/hosts.librespot
-    
+
 # Labels
 LABEL \
     io.hass.name="${BUILD_NAME}" \
