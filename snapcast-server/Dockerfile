@@ -1,3 +1,6 @@
+ARG BUILD_FROM=ghcr.io/hassio-addons/base:18.1.0
+
+
 FROM rust:alpine as librespot-builder
 
 RUN apk add --no-cache \
@@ -40,9 +43,7 @@ WORKDIR /librespot
 
 RUN cargo build --releases
 
-
 # https://developers.home-assistant.io/docs/add-ons/configuration#add-on-dockerfile
-ARG BUILD_FROM=ghcr.io/hassio-addons/base:18.1.0
 FROM $BUILD_FROM
 
 RUN apk update
