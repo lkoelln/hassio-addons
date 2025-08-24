@@ -41,7 +41,7 @@ RUN rustup component add rustfmt && \
 RUN git clone https://github.com/librespot-org/librespot.git
 WORKDIR /librespot
 
-RUN cargo build --releases
+RUN cargo build --release
 
 # https://developers.home-assistant.io/docs/add-ons/configuration#add-on-dockerfile
 FROM $BUILD_FROM
