@@ -1,3 +1,46 @@
+FROM rust:alpine as librespot-builder
+
+RUN apk add --no-cache \
+        git \
+        nano\
+        openssh-server  \
+        # for rust-analyzer vscode plugin
+        pkgconf \
+        musl-dev \
+        # developer dependencies
+        libunwind-dev \
+        pulseaudio-dev \
+        portaudio-dev \
+        alsa-lib-dev \
+        sdl2-dev \
+        gstreamer-dev \
+        gst-plugins-base-dev \
+        jack-dev \
+        avahi-dev \
+        openssl \
+        openssl-dev \
+        openssl-libs-static && \
+        rm -rf /lib/apk/db/*
+
+RUN apk add --no-cache alpine-sdk && \
+    cd /tmp && \
+    wget https://www.alsa-project.org/files/pub/lib/alsa-lib-1.2.9.tar.bz2 && \
+    tar xvjf alsa-lib-1.2.9.tar.bz2 && \
+    cd alsa-lib-1.2.9 && \
+    ./configure --enable-static --disable-shared && \
+    make && \
+    make install
+
+RUN rustup component add rustfmt && \
+    rustup component add clippy && \
+    cargo install cargo-hack
+
+RUN git clone https://github.com/librespot-org/librespot.git
+WORKDIR /librespot
+
+RUN cargo build --releases
+
+
 # https://developers.home-assistant.io/docs/add-ons/configuration#add-on-dockerfile
 ARG BUILD_FROM=ghcr.io/hassio-addons/base:18.1.0
 FROM $BUILD_FROM
@@ -29,7 +72,6 @@ RUN \
         avahi \
         pulseaudio \
         alsa-plugins-pulse \
-#        snapcast \
         alsa-utils \
         alsa-utils-doc \
         alsa-lib \
@@ -56,8 +98,10 @@ RUN \
 #        --verbose \
 #        -- librespot
 
+COPY --from=librespot-builder /librespot/target/release/librespot /usr/bin/librespot
+
 RUN apk add snapcast --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing
-RUN apk add librespot --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing
+# RUN apk add librespot --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing
 RUN wget https://github.com/badaix/snapweb/releases/download/v0.9.1/snapweb.zip
 RUN unzip snapweb.zip -d /usr/share/snapweb
 
@@ -86,10 +130,6 @@ RUN \
 
 # https://stackoverflow.com/a/75295879 dbus daemon slow start fix
 RUN sed -i 's/ systemd//g' /etc/nsswitch.conf
-
-# Librespot issues with Spotify DNS resolution
-# See https://github.com/librespot-org/librespot/issues/1527
-RUN sed -i '1i0.0.0.0 apresolve.spotify.com' /etc/hosts
 
 # Copy root filesystem
 COPY rootfs /
