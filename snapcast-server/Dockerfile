@@ -29,9 +29,6 @@ RUN apk add --no-cache alpine-sdk
 
 WORKDIR /tmp
 
-# Add specific compiler version and memory management
-RUN apk add --no-cache gcc=~12.2
-
 RUN wget https://www.alsa-project.org/files/pub/lib/alsa-lib-1.2.9.tar.bz2 && \
         tar xvjf alsa-lib-1.2.9.tar.bz2
 
