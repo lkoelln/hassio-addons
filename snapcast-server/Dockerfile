@@ -29,12 +29,16 @@ RUN apk add --no-cache alpine-sdk
 
 WORKDIR /tmp
 
+# Add specific compiler version and memory management
+RUN apk add --no-cache gcc=~12.2
+
 RUN wget https://www.alsa-project.org/files/pub/lib/alsa-lib-1.2.9.tar.bz2 && \
         tar xvjf alsa-lib-1.2.9.tar.bz2
 
 WORKDIR /tmp/alsa-lib-1.2.9 
-RUN ./configure --enable-static --disable-shared && \
-        make && \
+# Add CFLAGS for memory optimization and limit parallel jobs
+RUN CFLAGS="-O2 -g" ./configure --enable-static --disable-shared && \
+        make -j2 && \
         make install
 
 WORKDIR /
