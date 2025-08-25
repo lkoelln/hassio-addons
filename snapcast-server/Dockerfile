@@ -1,7 +1,7 @@
 ARG BUILD_FROM=ghcr.io/hassio-addons/base:18.1.0
 
 
-FROM rust:alpine as librespot-builder
+FROM rust:alpine AS librespot-builder
 
 RUN apk add --no-cache \
         git \
@@ -25,14 +25,19 @@ RUN apk add --no-cache \
         openssl-libs-static && \
         rm -rf /lib/apk/db/*
 
-RUN apk add --no-cache alpine-sdk && \
-    cd /tmp && \
-    wget https://www.alsa-project.org/files/pub/lib/alsa-lib-1.2.9.tar.bz2 && \
-    tar xvjf alsa-lib-1.2.9.tar.bz2 && \
-    cd alsa-lib-1.2.9 && \
-    ./configure --enable-static --disable-shared && \
-    make && \
-    make install
+RUN apk add --no-cache alpine-sdk
+
+WORKDIR /tmp
+
+RUN wget https://www.alsa-project.org/files/pub/lib/alsa-lib-1.2.9.tar.bz2 && \
+        tar xvjf alsa-lib-1.2.9.tar.bz2
+
+WORKDIR /tmp/alsa-lib-1.2.9 
+RUN ./configure --enable-static --disable-shared && \
+        make && \
+        make install
+
+WORKDIR /
 
 RUN rustup component add rustfmt && \
     rustup component add clippy && \
