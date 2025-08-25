@@ -1,5 +1,8 @@
 <!-- https://developers.home-assistant.io/docs/add-ons/presentation#keeping-a-changelog -->
 
+## 0.4.6
+Build and use librespot dev branch
+
 ## 0.4.5
 updated versions
 
