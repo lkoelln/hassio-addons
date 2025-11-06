@@ -1,5 +1,8 @@
 <!-- https://developers.home-assistant.io/docs/add-ons/presentation#keeping-a-changelog -->
 
+## 0.4.8
+Fix for new snapclient parameter
+
 ## 0.4.7
 Update to Librespot 0.7.1, Snapweb 0.9.2, Snapcast 0.34.0, HassIO Base 18.2.1
 
