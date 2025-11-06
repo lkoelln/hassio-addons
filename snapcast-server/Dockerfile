@@ -1,4 +1,4 @@
-ARG BUILD_FROM=ghcr.io/hassio-addons/base:18.1.0
+ARG BUILD_FROM=ghcr.io/hassio-addons/base:18.2.1
 
 
 FROM rust:alpine AS librespot-builder
@@ -44,7 +44,7 @@ RUN rustup component add rustfmt && \
     rustup component add clippy && \
     cargo install cargo-hack
 
-RUN git clone https://github.com/librespot-org/librespot.git
+RUN git clone --branch v0.7.1 https://github.com/librespot-org/librespot.git 
 WORKDIR /librespot
 
 RUN cargo build --release
@@ -107,9 +107,9 @@ RUN \
 
 COPY --from=librespot-builder /librespot/target/release/librespot /usr/bin/librespot
 
-RUN apk add snapcast --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing
+RUN apk add snapcast --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
 # RUN apk add librespot --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing
-RUN wget https://github.com/badaix/snapweb/releases/download/v0.9.1/snapweb.zip
+RUN wget https://github.com/badaix/snapweb/releases/download/v0.9.2/snapweb.zip
 RUN unzip snapweb.zip -d /usr/share/snapweb
 
 RUN \
