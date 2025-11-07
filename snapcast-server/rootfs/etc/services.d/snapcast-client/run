@@ -13,4 +13,4 @@ sleep 5s
 
 bashio::log.info "Starting snapcast client..."
 
-/usr/bin/snapclient --host 127.0.0.1 --port 1704 --hostID home-assistant
+/usr/bin/snapclient --hostID home-assistant tcp://127.0.0.1:1704

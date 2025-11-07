@@ -44,7 +44,7 @@ RUN rustup component add rustfmt && \
     rustup component add clippy && \
     cargo install cargo-hack
 
-RUN git clone --branch v0.7.1 https://github.com/librespot-org/librespot.git 
+RUN git clone https://github.com/librespot-org/librespot.git 
 WORKDIR /librespot
 
 RUN cargo build --release

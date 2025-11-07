@@ -1,5 +1,8 @@
 <!-- https://developers.home-assistant.io/docs/add-ons/presentation#keeping-a-changelog -->
 
+## 0.4.9
+Use librespot dev branch
+
 ## 0.4.8
 Fix for new snapclient parameter
 
